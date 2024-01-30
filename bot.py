@@ -1,13 +1,17 @@
-from flask import Flask
+from flask import Flask,request
 import telegram
-import app as ap
 
 app = Flask(__name__)
 
-chat_id = "1806482236"
-@app.route("/")
+Token = "6745554947:AAH0Xt-pNF7dasRCeI2BjgMuXN-1o-DzFbk"
+bot = telegram.Bot(Token)
+url = "https://umidjon12346.pythonanywhere.com/"
+bot.delete_webhook()
+
+@app.route("/",methods = ["POST"])
 def user():
-    ap.bot.send_message(chat_id= chat_id,text="Hi")
+    data = request.get_json()
+    bot.send_message(chat_id=data["result"]["message"]["from"],text=data["result"]["message"]["text"])
     return "HEllo"
 
 if __name__=="__main__":
