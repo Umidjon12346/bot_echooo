@@ -10,7 +10,7 @@ bot = telegram.Bot(Token)
 def user():
     data = request.get_json()
     print(data)
-    bot.send_message(chat_id=data["result"]["message"]["from"],text=data["result"]["message"]["text"])
+    bot.send_message(chat_id=data.message.chat.id,text= data.message.text)
     return "HElo"
 
 if __name__=="__main__":
