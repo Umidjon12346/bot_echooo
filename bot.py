@@ -9,7 +9,7 @@ bot = telegram.Bot(Token)
 @app.route("/", methods = ["POST"])
 def user():
     data = request.get_json()
-    bot.send_message(chat_id=data["message"]["from"],text=data["message"]["text"])
+    bot.send_message(chat_id=data["result"]["message"]["from"],text=data["result"]["message"]["text"])
     return "HEllo"
 
 if __name__=="__main__":
